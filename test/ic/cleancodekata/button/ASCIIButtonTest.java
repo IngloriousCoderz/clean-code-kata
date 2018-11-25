@@ -1,7 +1,6 @@
-package ic.cleancodekata.quadrato;
+package ic.cleancodekata.button;
 
 
-import ic.cleancodekata.quadrato.ASCIIButton;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 

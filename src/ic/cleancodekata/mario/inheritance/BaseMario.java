@@ -5,6 +5,7 @@ import ic.cleancodekata.mario.Mario;
 
 public class BaseMario implements Mario {
 
+    @Override
     public String onKeyPressed(KeyCode keyCode) {
         switch (keyCode) {
             case LEFT:

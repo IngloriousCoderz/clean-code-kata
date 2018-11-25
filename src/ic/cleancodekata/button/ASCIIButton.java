@@ -1,4 +1,4 @@
-package ic.cleancodekata.quadrato;
+package ic.cleancodekata.button;
 
 public class ASCIIButton {
 

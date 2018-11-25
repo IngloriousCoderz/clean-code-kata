@@ -1,4 +1,4 @@
-package ic.cleancodekata.quadrato;
+package ic.cleancodekata.button;
 
 public class Visualizza {
     public static void visualizza(int x,int y, String ciao){

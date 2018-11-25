@@ -19,6 +19,7 @@ public class GodMario implements Mario {
         this.type = type;
     }
 
+    @Override
     public String onKeyPressed(KeyCode keyCode) {
         switch (keyCode) {
             case LEFT:
