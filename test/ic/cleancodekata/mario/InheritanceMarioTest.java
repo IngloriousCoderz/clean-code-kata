@@ -13,27 +13,27 @@ public class InheritanceMarioTest {
     public void testBaseMario() {
         Mario mario = new BaseMario();
         
-        MarioTest.testBaseMario(mario);
+        MarioTestHelper.testBaseMario(mario);
     }
 
     @Test
     public void testSuperMario() {
         Mario mario = new SuperMario();
         
-        MarioTest.testSuperMario(mario);
+        MarioTestHelper.testSuperMario(mario);
     }
 
     @Test
     public void testFireballMario() {
         Mario mario = new FireballMario();
         
-        MarioTest.testFireballMario(mario);
+        MarioTestHelper.testFireballMario(mario);
     }
 
     @Test
     public void testFlyingSquirrelMario() {
         Mario mario = new FlyingSquirrelMario();
         
-        MarioTest.testFlyingSquirrelMario(mario);
+        MarioTestHelper.testFlyingSquirrelMario(mario);
     }
 }

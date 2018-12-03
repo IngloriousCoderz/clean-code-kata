@@ -14,27 +14,27 @@ public class StatefulMarioTest {
     public void testBaseMario() {
         Mario mario = new StatefulMario(new BaseState());
 
-        MarioTest.testBaseMario(mario);
+        MarioTestHelper.testBaseMario(mario);
     }
 
     @Test
     public void testSuperMario() {
         Mario mario = new StatefulMario(new SuperState());
 
-        MarioTest.testSuperMario(mario);
+        MarioTestHelper.testSuperMario(mario);
     }
 
     @Test
     public void testFireballMario() {
         Mario mario = new StatefulMario(new FireballState());
 
-        MarioTest.testFireballMario(mario);
+        MarioTestHelper.testFireballMario(mario);
     }
 
     @Test
     public void testFlyingSquirrelMario() {
         Mario mario = new StatefulMario(new FlyingSquirrelState());
 
-        MarioTest.testFlyingSquirrelMario(mario);
+        MarioTestHelper.testFlyingSquirrelMario(mario);
     }
 }

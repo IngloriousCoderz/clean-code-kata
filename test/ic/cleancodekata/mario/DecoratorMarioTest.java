@@ -12,7 +12,7 @@ public class DecoratorMarioTest {
     public void testBaseMario() {
         Mario mario = new BaseMario();
 
-        MarioTest.testBaseMario(mario);
+        MarioTestHelper.testBaseMario(mario);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class DecoratorMarioTest {
         Mario mario = new BaseMario();
         mario = new SuperMario(mario);
 
-        MarioTest.testSuperMario(mario);
+        MarioTestHelper.testSuperMario(mario);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class DecoratorMarioTest {
         mario = new SuperMario(mario);
         mario = new FireballMario(mario);
 
-        MarioTest.testFireballMario(mario);
+        MarioTestHelper.testFireballMario(mario);
     }
 
     @Test
@@ -38,6 +38,6 @@ public class DecoratorMarioTest {
         mario = new SuperMario(mario);
         mario = new FlyingSquirrelMario(mario);
 
-        MarioTest.testFlyingSquirrelMario(mario);
+        MarioTestHelper.testFlyingSquirrelMario(mario);
     }
 }

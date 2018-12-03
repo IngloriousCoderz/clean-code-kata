@@ -11,27 +11,27 @@ public class GodMarioTest {
     public void testBaseMario() {
         Mario mario = new GodMario(Type.BASE);
 
-        MarioTest.testBaseMario(mario);
+        MarioTestHelper.testBaseMario(mario);
     }
 
     @Test
     public void testSuperMario() {
         Mario mario = new GodMario(Type.SUPER);
 
-        MarioTest.testSuperMario(mario);
+        MarioTestHelper.testSuperMario(mario);
     }
 
     @Test
     public void testFireballMario() {
         Mario mario = new GodMario(Type.FIREBALL);
 
-        MarioTest.testFireballMario(mario);
+        MarioTestHelper.testFireballMario(mario);
     }
 
     @Test
     public void testFlyingSquirrelMario() {
         Mario mario = new GodMario(Type.FLYING_SQUIRREL);
 
-        MarioTest.testFlyingSquirrelMario(mario);
+        MarioTestHelper.testFlyingSquirrelMario(mario);
     }
 }

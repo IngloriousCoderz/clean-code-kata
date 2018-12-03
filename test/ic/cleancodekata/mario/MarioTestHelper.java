@@ -2,7 +2,7 @@ package ic.cleancodekata.mario;
 
 import static org.junit.Assert.assertEquals;
 
-public class MarioTest {
+class MarioTestHelper {
 
     static void testBaseMario(Mario mario) {
         assertEquals("", mario.onKeyPressed(KeyCode.DOWN));
