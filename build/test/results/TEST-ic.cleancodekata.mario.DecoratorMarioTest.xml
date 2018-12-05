@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="amon" name="ic.cleancodekata.mario.DecoratorMarioTest" skipped="0" tests="4" time="0.052" timestamp="2018-12-03T12:39:00">
+<testsuite errors="0" failures="0" hostname="amon" name="ic.cleancodekata.mario.DecoratorMarioTest" skipped="0" tests="4" time="0.052" timestamp="2018-12-05T12:18:53">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="IT" />
@@ -58,7 +58,7 @@
     <property name="copylibs.rebase" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ic.cleancodekata.mario.DecoratorMarioTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/antony/Progetti/Synesthesia/Clean Code Kata/clean-code-kata/build/test/results/TEST-ic.cleancodekata.mario.DecoratorMarioTest.xml crashfile=/home/antony/Progetti/Synesthesia/Clean Code Kata/clean-code-kata/build/junitvmwatcher1116754805296930027.properties propsfile=/home/antony/Progetti/Synesthesia/Clean Code Kata/clean-code-kata/build/junit8029840942590556996.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ic.cleancodekata.mario.DecoratorMarioTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/antony/Progetti/Synesthesia/Clean Code Kata/clean-code-kata/build/test/results/TEST-ic.cleancodekata.mario.DecoratorMarioTest.xml crashfile=/home/antony/Progetti/Synesthesia/Clean Code Kata/clean-code-kata/build/junitvmwatcher4887364920696743093.properties propsfile=/home/antony/Progetti/Synesthesia/Clean Code Kata/clean-code-kata/build/junit1449044027269484777.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -356,7 +356,7 @@
     <property name="do.mkdist" value="true" />
     <property name="libs.absolutelayout.src" value="" />
     <property name="libs.jpa20-persistence.classpath" value="/home/antony/Software/netbeans-8.2/java/modules/ext/eclipselink/javax.persistence_2.1.0.v201304241213.jar" />
-    <property name="os.version" value="4.18.0-11-generic" />
+    <property name="os.version" value="4.18.0-12-generic" />
     <property name="application.args" value="" />
     <property name="libs.EclipseLink-GlassFish-v3.javadoc" value="/home/antony/Software/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
     <property name="libs.javaee-api-7.0.maven-pom" value="" />
@@ -401,10 +401,10 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/home/antony/Software/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="ic.cleancodekata.mario.DecoratorMarioTest" name="testBaseMario" time="0.002" />
+  <testcase classname="ic.cleancodekata.mario.DecoratorMarioTest" name="testBaseMario" time="0.001" />
   <testcase classname="ic.cleancodekata.mario.DecoratorMarioTest" name="testSuperMario" time="0.001" />
   <testcase classname="ic.cleancodekata.mario.DecoratorMarioTest" name="testFlyingSquirrelMario" time="0.0" />
-  <testcase classname="ic.cleancodekata.mario.DecoratorMarioTest" name="testFireballMario" time="0.0" />
+  <testcase classname="ic.cleancodekata.mario.DecoratorMarioTest" name="testFireballMario" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

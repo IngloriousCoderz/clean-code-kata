@@ -11,6 +11,11 @@ public class ChristmasBallsDecorator implements Tree {
     }
 
     @Override
+    public int getWidth() {
+        return tree.getWidth();
+    }
+
+    @Override
     public int getCanopyHeight() {
         return tree.getCanopyHeight();
     }
@@ -26,27 +31,39 @@ public class ChristmasBallsDecorator implements Tree {
     }
 
     @Override
+    public int getMinimumAllowedCanopyHeight() {
+        return tree.getMinimumAllowedCanopyHeight();
+    }
+
+    @Override
     public String build() throws HeightTooSmallException {
         int canopyHeight = getCanopyHeight();
         String result = tree.build();
 
-        String[] levels = result.split("\n");
+        String[] rows = result.split("\n");
         for (int i = 0; i < canopyHeight; i++) {
-            levels[i] = buildChristmasLights(levels[i]);
+            rows[i] = buildChristmasLights(rows[i]);
         }
 
-        return String.join("\n", levels);
+        return String.join("\n", rows);
     }
 
-    private String buildChristmasLights(String level) {
-        int leftIndex = level.indexOf("/");
-        int rightIndex = level.lastIndexOf("\\");
+    private String buildChristmasLights(String row) {
+        String[] tokens = row.split("[^\\s]+");
 
-        if (leftIndex < 0 || rightIndex < 0) {
-            return level;
+        if (tokens.length != 2) {
+            return row;
         }
 
-        StringBuilder builder = new StringBuilder(level);
+        String insideOfCanopy = tokens[1];
+        int leftIndex = row.indexOf(insideOfCanopy);
+        int rightIndex = leftIndex + insideOfCanopy.length() - 1;
+
+        if (leftIndex < 0) {
+            return row;
+        }
+
+        StringBuilder builder = new StringBuilder(row);
         for (int j = leftIndex + 1; j < rightIndex; j++) {
             char randomLight = chooseRandomLight();
             builder.setCharAt(j, randomLight);
