@@ -2,6 +2,10 @@ package ic.cleancodekata.button;
 
 public class ASCIIButton {
 
+    private final static String WHOLE_CELL = "* ";
+    private final static String EMPTY_CELL = "  ";
+    private final static String NEWLINE = "\n";
+
     private int rows;
     private int columns;
 
@@ -32,9 +36,9 @@ public class ASCIIButton {
     private String buildWholeRow(int columns) {
         String row = "";
         for (int j = 0; j < columns; j++) {
-            row += "* ";
+            row += WHOLE_CELL;
         }
-        row += "\n";
+        row += NEWLINE;
 
         return row;
     }
@@ -55,7 +59,7 @@ public class ASCIIButton {
     private String buildRowWithText(int columns, String text) {
         int columnsWithoutBorders = columns - 2;
         float halfColumns = columnsWithoutBorders / 2.0f;
-        int charsInHalfColumns = (int) (halfColumns * 2);
+        int charsInHalfColumns = (int) (halfColumns * EMPTY_CELL.length());
 
         int textLength = text.length();
         int halfText = textLength / 2;
@@ -65,17 +69,17 @@ public class ASCIIButton {
         rowWithText += buildLeftOffset(charsInHalfColumns - halfTextFixed);
         rowWithText += text;
         rowWithText += buildRightOffset(charsInHalfColumns - halfText);
-        rowWithText += "\n";
+        rowWithText += NEWLINE;
 
         return rowWithText;
     }
 
     private String buildLeftOffset(int chars) {
-        return "* " + buildOffset(chars);
+        return WHOLE_CELL + buildOffset(chars);
     }
 
     private String buildRightOffset(int chars) {
-        return buildOffset(chars) + "* ";
+        return buildOffset(chars) + WHOLE_CELL;
     }
 
     private String buildOffset(int chars) {
