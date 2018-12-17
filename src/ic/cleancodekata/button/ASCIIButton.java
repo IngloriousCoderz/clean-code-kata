@@ -9,9 +9,9 @@ public class ASCIIButton {
     private final static String EMPTY_CELL = SPACE + SPACE;
     private final static String WHOLE_CELL = "*" + SPACE;
 
-    private int rows;
-    private int columns;
-    private String text;
+    private final int rows;
+    private final int columns;
+    private final String text;
 
     public static void main(String[] args) {
         System.out.println(new ASCIIButton(10, 10, "hello").build());
