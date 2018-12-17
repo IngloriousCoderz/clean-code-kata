@@ -8,7 +8,7 @@ public class ASCIIButtonTest {
     @Test
     public void defaultConfiguration() {
         // given
-        ASCIIButton button = new ASCIIButton(10, 10);
+        ASCIIButton button = new ASCIIButton(10, 10, "ciao");
         String expected
                 = "* * * * * * * * * * \n"
                 + "*                 * \n"
@@ -22,7 +22,7 @@ public class ASCIIButtonTest {
                 + "* * * * * * * * * * \n";
         
         // when
-        String result = button.build("ciao");
+        String result = button.build();
         
         // then
         assertEquals(expected, result);
@@ -31,7 +31,7 @@ public class ASCIIButtonTest {
     @Test
     public void oddRows() {
         // given
-        ASCIIButton button = new ASCIIButton(7, 10);
+        ASCIIButton button = new ASCIIButton(7, 10, "ciao");
         String expected
                 = "* * * * * * * * * * \n"
                 + "*                 * \n"
@@ -42,7 +42,7 @@ public class ASCIIButtonTest {
                 + "* * * * * * * * * * \n";
         
         // when
-        String result = button.build("ciao");
+        String result = button.build();
         
         // then
         assertEquals(expected, result);
@@ -51,7 +51,7 @@ public class ASCIIButtonTest {
     @Test
     public void oddColumns() {
         // given
-        ASCIIButton button = new ASCIIButton(10, 7);
+        ASCIIButton button = new ASCIIButton(10, 7, "ciao");
         String expected
                 = "* * * * * * * \n"
                 + "*           * \n"
@@ -65,7 +65,7 @@ public class ASCIIButtonTest {
                 + "* * * * * * * \n";
         
         // when
-        String result = button.build("ciao");
+        String result = button.build();
         
         // then
         assertEquals(expected, result);
@@ -74,7 +74,7 @@ public class ASCIIButtonTest {
     @Test
     public void oddPhrase() {
         // given
-        ASCIIButton button = new ASCIIButton(10, 10);
+        ASCIIButton button = new ASCIIButton(10, 10, "hello");
         String expected
                 = "* * * * * * * * * * \n"
                 + "*                 * \n"
@@ -88,7 +88,7 @@ public class ASCIIButtonTest {
                 + "* * * * * * * * * * \n";
         
         // when
-        String result = button.build("hello");
+        String result = button.build();
         
         // then
         assertEquals(expected, result);
