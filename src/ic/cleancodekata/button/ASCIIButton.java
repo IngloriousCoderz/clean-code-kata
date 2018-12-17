@@ -2,11 +2,12 @@ package ic.cleancodekata.button;
 
 public class ASCIIButton {
 
-    private final static String EMPTY_CHAR = "";
+    private final static String EMPTY_STRING = "";
+    private final static String SPACE = " ";
     private final static String NEWLINE = "\n";
-    private final static String SPACE_CHAR = " ";
-    private final static String EMPTY_CELL = SPACE_CHAR + SPACE_CHAR;
-    private final static String WHOLE_CELL = "*" + SPACE_CHAR;
+
+    private final static String EMPTY_CELL = SPACE + SPACE;
+    private final static String WHOLE_CELL = "*" + SPACE;
 
     private int rows;
     private int columns;
@@ -27,7 +28,7 @@ public class ASCIIButton {
         int halfRows = rowsWithoutBorders / 2;
         int halfRowsFixed = halfRows - fixIfEven(rowsWithoutBorders);
 
-        String button = EMPTY_CHAR;
+        String button = EMPTY_STRING;
         button += buildWholeRow(columns);
         button += buildEmptyRows(halfRowsFixed, columns);
         button += buildRowWithText(columns, this.text);
@@ -38,7 +39,7 @@ public class ASCIIButton {
     }
 
     private String buildWholeRow(int columns) {
-        String row = EMPTY_CHAR;
+        String row = EMPTY_STRING;
         for (int j = 0; j < columns; j++) {
             row += WHOLE_CELL;
         }
@@ -48,7 +49,7 @@ public class ASCIIButton {
     }
 
     private String buildEmptyRows(int rows, int columns) {
-        String emptyRows = EMPTY_CHAR;
+        String emptyRows = EMPTY_STRING;
         for (int i = 0; i < rows; i++) {
             emptyRows += buildEmptyRow(columns);
         }
@@ -57,7 +58,7 @@ public class ASCIIButton {
     }
 
     private String buildEmptyRow(int columns) {
-        return buildRowWithText(columns, EMPTY_CHAR);
+        return buildRowWithText(columns, EMPTY_STRING);
     }
 
     private String buildRowWithText(int columns, String text) {
@@ -69,7 +70,7 @@ public class ASCIIButton {
         int halfText = textLength / 2;
         int halfTextFixed = halfText + fixIfOdd(textLength);
 
-        String rowWithText = EMPTY_CHAR;
+        String rowWithText = EMPTY_STRING;
         rowWithText += buildLeftOffset(charsInHalfColumns - halfTextFixed);
         rowWithText += text;
         rowWithText += buildRightOffset(charsInHalfColumns - halfText);
@@ -87,9 +88,9 @@ public class ASCIIButton {
     }
 
     private String buildOffset(int chars) {
-        String offset = EMPTY_CHAR;
+        String offset = EMPTY_STRING;
         for (int j = 0; j < chars; j++) {
-            offset += SPACE_CHAR;
+            offset += SPACE;
         }
         return offset;
     }
