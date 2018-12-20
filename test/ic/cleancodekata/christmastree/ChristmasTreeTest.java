@@ -1,5 +1,6 @@
 package ic.cleancodekata.christmastree;
 
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -8,87 +9,92 @@ public class ChristmasTreeTest {
     @Test
     public void testDefault() {
         Tree tree = new PineTree(7);
-        String expected
-                = "    /\\\n"
-                + "   /  \\\n"
-                + "  /    \\\n"
-                + " /      \\\n"
-                + "/        \\\n"
-                + "----------\n"
-                + "    ||";
+        String[] expected = new String[]{
+            "    /\\",
+            "   /  \\",
+            "  /    \\",
+            " /      \\",
+            "/        \\",
+            "----------",
+            "    ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
     public void testMinimalHeight() {
         Tree tree = new PineTree(3);
-        String expected
-                = "/\\\n"
-                + "--\n"
-                + "||";
+        String[] expected = new String[]{
+            "/\\",
+            "--",
+            "||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
     public void testEvenHeight() {
         Tree tree = new PineTree(8);
-        String expected
-                = "     /\\\n"
-                + "    /  \\\n"
-                + "   /    \\\n"
-                + "  /      \\\n"
-                + " /        \\\n"
-                + "/          \\\n"
-                + "------------\n"
-                + "     ||";
+        String[] expected = new String[]{
+            "     /\\",
+            "    /  \\",
+            "   /    \\",
+            "  /      \\",
+            " /        \\",
+            "/          \\",
+            "------------",
+            "     ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test(expected = HeightTooSmallException.class)
     public void testImpossibleHeight() {
         Tree tree = new PineTree(2);
-        String result = tree.build();
+        tree.build();
     }
 
     @Test
     public void testAngel() {
         Tree tree = new PineTree(7);
         tree = new ChristmasAngelDecorator(tree);
-        String expected
-                = "    qp\n"
-                + "    /\\\n"
-                + "   /  \\\n"
-                + "  /    \\\n"
-                + " /      \\\n"
-                + "/        \\\n"
-                + "----------\n"
-                + "    ||";
+        String[] expected = new String[]{
+            "    qp",
+            "    /\\",
+            "   /  \\",
+            "  /    \\",
+            " /      \\",
+            "/        \\",
+            "----------",
+            "    ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
     public void testCandles() {
         Tree tree = new PineTree(7);
         tree = new ChristmasCandlesDecorator(tree);
-        String expected
-                = "    i/\\i\n"
-                + "   i/  \\i\n"
-                + "  i/    \\i\n"
-                + " i/      \\i\n"
-                + "i/        \\i\n"
-                + " ----------\n"
-                + "     ||";
+        String[] expected = new String[]{
+            "    ì/\\ì",
+            "   ì/  \\ì",
+            "  ì/    \\ì",
+            " ì/      \\ì",
+            "ì/        \\ì",
+            " ----------",
+            "     ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
@@ -96,18 +102,19 @@ public class ChristmasTreeTest {
         Tree tree = new PineTree(7);
         tree = new ChristmasCandlesDecorator(tree);
         tree = new ChristmasAngelDecorator(tree);
-        String expected
-                = "     qp\n"
-                + "    i/\\i\n"
-                + "   i/  \\i\n"
-                + "  i/    \\i\n"
-                + " i/      \\i\n"
-                + "i/        \\i\n"
-                + " ----------\n"
-                + "     ||";
+        String[] expected = new String[]{
+            "     qp",
+            "    ì/\\ì",
+            "   ì/  \\ì",
+            "  ì/    \\ì",
+            " ì/      \\ì",
+            "ì/        \\ì",
+            " ----------",
+            "     ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
@@ -115,18 +122,19 @@ public class ChristmasTreeTest {
         Tree tree = new PineTree(7);
         tree = new ChristmasAngelDecorator(tree);
         tree = new ChristmasCandlesDecorator(tree);
-        String expected
-                = "    iqpi\n"
-                + "    i/\\i\n"
-                + "   i/  \\i\n"
-                + "  i/    \\i\n"
-                + " i/      \\i\n"
-                + "i/        \\i\n"
-                + " ----------\n"
-                + "     ||";
+        String[] expected = new String[]{
+            "    ìqpì",
+            "    ì/\\ì",
+            "   ì/  \\ì",
+            "  ì/    \\ì",
+            " ì/      \\ì",
+            "ì/        \\ì",
+            " ----------",
+            "     ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
@@ -135,25 +143,24 @@ public class ChristmasTreeTest {
         tree = new ChristmasBallsDecorator(tree);
         tree = new ChristmasCandlesDecorator(tree);
         tree = new ChristmasAngelDecorator(tree);
-        String expected
-                = "     qp\n"
-                + "    i/\\i\n"
-                + "   i/  \\i\n"
-                + "  i/ o  \\i\n"
-                + " i/   *  \\i\n"
-                + "i/   o*** \\i\n"
-                + " ----------\n"
-                + "     ||";
+        String[] expected = new String[]{
+            "     qp",
+            "    ì/\\ì",
+            "   ì/  \\ì",
+            "  ì/ o  \\ì",
+            " ì/   *  \\ì",
+            "ì/   o*** \\ì",
+            " ----------",
+            "     ||"
+        };
 
-        String result = tree.build();
-        String[] rows = result.split("\n");
-        String[] expectedRows = expected.split("\n");
-        int length = rows.length;
+        List<String> result = tree.build();
+        int length = expected.length;
 
-        assertEquals(expectedRows[0], rows[0]);
-        assertEquals(expectedRows[1], rows[1]);
-        assertEquals(expectedRows[length - 2], rows[length - 2]);
-        assertEquals(expectedRows[length - 1], rows[length - 1]);
+        assertEquals(expected[0], result.get(0));
+        assertEquals(expected[1], result.get(1));
+        assertEquals(expected[length - 2], result.get(length - 2));
+        assertEquals(expected[length - 1], result.get(length - 1));
     }
 
     @Test
@@ -162,61 +169,62 @@ public class ChristmasTreeTest {
         tree = new ChristmasAngelDecorator(tree);
         tree = new ChristmasCandlesDecorator(tree);
         tree = new ChristmasBallsDecorator(tree);
-        String expected
-                = "    iqpi\n"
-                + "    i/\\i\n"
-                + "   i/  \\i\n"
-                + "  i/ o  \\i\n"
-                + " i/   *  \\i\n"
-                + "i/   o*** \\i\n"
-                + " ----------\n"
-                + "     ||";
+        String[] expected = new String[]{
+            "    ìqpì",
+            "    ì/\\ì",
+            "   ì/  \\ì",
+            "  ì/ o  \\ì",
+            " ì/   *  \\ì",
+            "ì/   o*** \\ì",
+            " ----------",
+            "     ||"
+        };
 
-        String result = tree.build();
-        String[] rows = result.split("\n");
-        String[] expectedRows = expected.split("\n");
-        int length = rows.length;
+        List<String> result = tree.build();
+        int length = expected.length;
 
-        assertEquals(expectedRows[0], rows[0]);
-        assertEquals(expectedRows[1], rows[1]);
-        assertEquals(expectedRows[length - 2], rows[length - 2]);
-        assertEquals(expectedRows[length - 1], rows[length - 1]);
+        assertEquals(expected[0], result.get(0));
+        assertEquals(expected[1], result.get(1));
+        assertEquals(expected[length - 2], result.get(length - 2));
+        assertEquals(expected[length - 1], result.get(length - 1));
     }
 
     @Test
     public void testOakTree() {
         Tree tree = new OakTree(10, 7);
-        String expected
-                = "/--------\\\n"
-                + "|        |\n"
-                + "|        |\n"
-                + "\\--------/\n"
-                + "   \\\\//\n"
-                + "    ||\n"
-                + "    ||";
+        String[] expected = new String[]{
+            "/--------\\",
+            "|        |",
+            "|        |",
+            "\\--------/",
+            "   \\\\//",
+            "    ||",
+            "    ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
     public void testMinimalHeightOnOak() {
         Tree tree = new OakTree(8, 5);
-        String expected
-                = "/------\\\n"
-                + "\\------/\n"
-                + "  \\\\//\n"
-                + "   ||\n"
-                + "   ||";
+        String[] expected = new String[]{
+            "/------\\",
+            "\\------/",
+            "  \\\\//",
+            "   ||",
+            "   ||"
+        };
 
-        String result = tree.build();
-        assertEquals(expected, result);
+        List<String> result = tree.build();
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test(expected = HeightTooSmallException.class)
     public void testImpossibleHeightOnOak() {
         Tree tree = new OakTree(8, 4);
-        String result = tree.build();
+        tree.build();
     }
 
     @Test
@@ -225,26 +233,27 @@ public class ChristmasTreeTest {
         tree = new ChristmasBallsDecorator(tree);
         tree = new ChristmasCandlesDecorator(tree);
         tree = new ChristmasAngelDecorator(tree);
-        String expected
-                = "     qp\n"
-                + "i/--------\\i\n"
-                + "i| o   oo |i\n"
-                + "i|   *oo  |i\n"
-                + "i\\--------/i\n"
-                + "    \\\\//\n"
-                + "     ||\n"
-                + "     ||";
+        String[] expected = new String[]{
+            "     qp",
+            "ì/--------\\ì",
+            "ì| o   oo |ì",
+            "ì|   *oo  |ì",
+            "ì\\--------/ì",
+            "    \\\\//",
+            "     ||",
+            "     ||"
+        };
 
-        String result = tree.build();
-        String[] rows = result.split("\n");
-        String[] expectedRows = expected.split("\n");
-        int length = rows.length;
+        System.out.println(String.join("\n", expected));
+        
+        List<String> result = tree.build();
+        int length = expected.length;
 
-        assertEquals(expectedRows[0], rows[0]);
-        assertEquals(expectedRows[1], rows[1]);
-        assertEquals(expectedRows[length - 4], rows[length - 4]);
-        assertEquals(expectedRows[length - 3], rows[length - 3]);
-        assertEquals(expectedRows[length - 2], rows[length - 2]);
-        assertEquals(expectedRows[length - 1], rows[length - 1]);
+        assertEquals(expected[0], result.get(0));
+        assertEquals(expected[1], result.get(1));
+        assertEquals(expected[length - 4], result.get(length - 4));
+        assertEquals(expected[length - 3], result.get(length - 3));
+        assertEquals(expected[length - 2], result.get(length - 2));
+        assertEquals(expected[length - 1], result.get(length - 1));
     }
 }

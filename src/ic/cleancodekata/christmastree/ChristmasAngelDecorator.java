@@ -1,13 +1,72 @@
 package ic.cleancodekata.christmastree;
 
+import static ic.cleancodekata.christmastree.Tree.EMPTY_STRING;
+import static ic.cleancodekata.christmastree.Tree.SPACE;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChristmasAngelDecorator implements Tree {
 
+    private final static String ANGEL = "qp";
     private final static int ANGEL_HEIGHT = 1;
 
     private final Tree tree;
 
     public ChristmasAngelDecorator(Tree tree) {
         this.tree = tree;
+    }
+
+    @Override
+    public List<String> build() {
+        List<String> tree = new ArrayList();
+        tree.addAll(buildCanopy());
+        tree.addAll(buildBase());
+        tree.addAll(buildTrunk());
+        return tree;
+    }
+
+    @Override
+    public List<String> buildCanopy() {
+        List<String> result = new ArrayList();
+        result.add(buildAngel());
+        result.addAll(tree.buildCanopy());
+        return result;
+    }
+
+    private String buildAngel() {
+        int beforeAngel = getBeforeAngelWidth();
+
+        String angelRow = EMPTY_STRING;
+        for (int j = 0; j < beforeAngel; j++) {
+            angelRow += SPACE;
+        }
+        angelRow += ANGEL;
+        return angelRow;
+    }
+
+    @Override
+    public List<String> buildBase() {
+        return tree.buildBase();
+    }
+
+    @Override
+    public List<String> buildTrunk() {
+        return tree.buildTrunk();
+    }
+
+    private int getBeforeAngelWidth() {
+        int halfWidth = getWidth() / 2;
+        int halfAngelWidth = getAngelWidth() / 2;
+        return halfWidth - halfAngelWidth;
+    }
+
+    private int getAngelWidth() {
+        return ANGEL.length();
+    }
+
+    @Override
+    public int getMinimumAllowedCanopyHeight() {
+        return tree.getMinimumAllowedCanopyHeight();
     }
 
     @Override
@@ -29,29 +88,5 @@ public class ChristmasAngelDecorator implements Tree {
     public int getTrunkHeight() {
         return tree.getTrunkHeight();
     }
-    
-    @Override
-    public int getMinimumAllowedCanopyHeight() {
-        return tree.getMinimumAllowedCanopyHeight();
-    }
 
-    @Override
-    public String build() throws HeightTooSmallException {
-        String result = tree.build();
-
-        String[] rows = result.split("\n");
-        String angelLevel = buildAngel();
-
-        return angelLevel + String.join("\n", rows);
-    }
-
-    private String buildAngel() {
-        int halfWidth = getWidth() / 2;
-        String angelRow = "";
-        for (int j = 0; j < halfWidth - 1; j++) {
-            angelRow += " ";
-        }
-        angelRow += "qp\n";
-        return angelRow;
-    }
 }

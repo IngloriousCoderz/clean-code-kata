@@ -1,7 +1,8 @@
 package ic.cleancodekata.button;
 
 public class Visualizza {
-    public static void visualizza(int x,int y, String ciao){
+    public static void visualizza(int x,int y,String ciao)
+    {
   for (int i=0;i<x;i++){
     System.out.print("* ");
   }
@@ -37,7 +38,8 @@ public class Visualizza {
   }
   System.out.println();
 }
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         visualizza(10,10, "ciao");
     }
 }

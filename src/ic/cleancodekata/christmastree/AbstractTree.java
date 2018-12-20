@@ -1,9 +1,12 @@
 package ic.cleancodekata.christmastree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class AbstractTree implements Tree {
 
     @Override
-    public String build() throws HeightTooSmallException {
+    public List<String> build() throws HeightTooSmallException {
         int canopyHeight = getCanopyHeight();
         int miniumAllowedCanopyHeight = getMinimumAllowedCanopyHeight();
 
@@ -14,41 +17,33 @@ public abstract class AbstractTree implements Tree {
         return buildTree();
     }
 
-    private String buildTree() {
-        String tree = "";
-        tree += buildCanopy();
-        tree += buildBase();
-        tree += buildTrunk();
+    private List<String> buildTree() {
+        List<String> tree = new ArrayList();
+        tree.addAll(buildCanopy());
+        tree.addAll(buildBase());
+        tree.addAll(buildTrunk());
         return tree;
     }
 
-    protected abstract String buildCanopy();
+    @Override
+    public List<String> buildBase() {
+        List<String> base = new ArrayList();
+        for (int i = 0; i < getBaseHeight(); i++) {
+            base.add(buildBaseRow());
+        }
+        return base;
+    }
 
-    protected abstract String buildBase();
+    protected abstract String buildBaseRow();
 
-    private String buildTrunk() {
-        int trunkHeight = getTrunkHeight();
-
-        String trunk = "";
-        for (int i = 0; i < trunkHeight; i++) {
-            trunk += buildTrunkRow();
-            if (i < trunkHeight - 1) {
-                trunk += "\n";
-            }
+    @Override
+    public List<String> buildTrunk() {
+        List<String> trunk = new ArrayList();
+        for (int i = 0; i < getTrunkHeight(); i++) {
+            trunk.add(buildTrunkRow());
         }
         return trunk;
     }
 
-    private String buildTrunkRow() {
-        int width = getWidth();
-        int halfWidth = width / 2;
-        int beforeTrunk = halfWidth - 1;
-
-        String trunk = "";
-        for (int j = 0; j < beforeTrunk; j++) {
-            trunk += " ";
-        }
-        trunk += "||";
-        return trunk;
-    }
+    protected abstract String buildTrunkRow();
 }
