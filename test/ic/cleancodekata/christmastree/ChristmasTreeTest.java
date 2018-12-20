@@ -244,8 +244,6 @@ public class ChristmasTreeTest {
             "     ||"
         };
 
-        System.out.println(String.join("\n", expected));
-        
         List<String> result = tree.build();
         int length = expected.length;
 
