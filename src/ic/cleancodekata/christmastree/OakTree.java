@@ -126,8 +126,8 @@ public class OakTree extends AbstractTree implements Tree {
     }
 
     @Override
-    public int getCanopyHeight() {
-        return height - getBaseHeight() - getTrunkHeight();
+    public int getHeight() {
+        return height;
     }
 
     @Override

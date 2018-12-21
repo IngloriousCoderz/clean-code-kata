@@ -66,6 +66,11 @@ public class ChristmasAngelDecorator extends AbstractTree {
     }
 
     @Override
+    public int getHeight() {
+        return tree.getHeight();
+    }
+
+    @Override
     public int getCanopyHeight() {
         return tree.getCanopyHeight() + ANGEL_HEIGHT;
     }

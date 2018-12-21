@@ -77,8 +77,8 @@ public class ChristmasBallsDecorator extends AbstractTree {
     }
 
     @Override
-    public int getCanopyHeight() {
-        return tree.getCanopyHeight();
+    public int getHeight() {
+        return tree.getHeight();
     }
 
     @Override

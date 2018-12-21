@@ -31,7 +31,7 @@ public class PineTree extends AbstractTree implements Tree {
     private String buildCanopyRow(int row) {
         int canopyHeight = getCanopyHeight();
         int beforeCanopy = canopyHeight - 1 - row;
-        int insideCanopy = 2 * row;
+        int insideCanopy = row * 2;
 
         String leaves = EMPTY_STRING;
         for (int j = 0; j < beforeCanopy; j++) {
@@ -71,7 +71,7 @@ public class PineTree extends AbstractTree implements Tree {
         int halfTrunk = TRUNK.length() / 2;
         return halfWidth - halfTrunk;
     }
-    
+
     @Override
     public int getMinimumAllowedCanopyHeight() {
         return 1;
@@ -83,8 +83,8 @@ public class PineTree extends AbstractTree implements Tree {
     }
 
     @Override
-    public int getCanopyHeight() {
-        return height - getBaseHeight() - getTrunkHeight();
+    public int getHeight() {
+        return height;
     }
 
     @Override

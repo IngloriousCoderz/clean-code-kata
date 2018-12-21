@@ -40,4 +40,9 @@ public abstract class AbstractTree implements Tree {
         }
         return trunk;
     }
+
+    @Override
+    public int getCanopyHeight() {
+        return getHeight() - getBaseHeight() - getTrunkHeight();
+    }
 }

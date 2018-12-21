@@ -39,8 +39,8 @@ public class ChristmasCandlesDecorator extends AbstractTree {
 
     private String putCandlesOnRow(String row) {
         String trimmedRow = row.trim();
-        int leftIndex = row.indexOf(trimmedRow);
-        String beforeRow = row.substring(0, leftIndex);
+        int startOfRow = row.indexOf(trimmedRow);
+        String beforeRow = row.substring(0, startOfRow);
 
         return beforeRow + CANDLE + trimmedRow + CANDLE;
     }
@@ -60,8 +60,8 @@ public class ChristmasCandlesDecorator extends AbstractTree {
     }
 
     @Override
-    public int getCanopyHeight() {
-        return tree.getCanopyHeight();
+    public int getHeight() {
+        return tree.getHeight();
     }
 
     @Override

@@ -19,6 +19,8 @@ public interface Tree {
     public int getMinimumAllowedCanopyHeight();
 
     public int getWidth();
+    
+    public int getHeight();
 
     public int getCanopyHeight();
 
