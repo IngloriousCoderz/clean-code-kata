@@ -5,7 +5,7 @@ import static ic.cleancodekata.christmastree.Tree.SPACE;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChristmasAngelDecorator implements Tree {
+public class ChristmasAngelDecorator extends AbstractTree {
 
     private final static String ANGEL = "qp";
     private final static int ANGEL_HEIGHT = 1;
@@ -14,15 +14,6 @@ public class ChristmasAngelDecorator implements Tree {
 
     public ChristmasAngelDecorator(Tree tree) {
         this.tree = tree;
-    }
-
-    @Override
-    public List<String> build() {
-        List<String> tree = new ArrayList();
-        tree.addAll(buildCanopy());
-        tree.addAll(buildBase());
-        tree.addAll(buildTrunk());
-        return tree;
     }
 
     @Override
@@ -45,13 +36,13 @@ public class ChristmasAngelDecorator implements Tree {
     }
 
     @Override
-    public List<String> buildBase() {
-        return tree.buildBase();
+    public String buildBaseRow() {
+        return tree.buildBaseRow();
     }
 
     @Override
-    public List<String> buildTrunk() {
-        return tree.buildTrunk();
+    public String buildTrunkRow() {
+        return tree.buildTrunkRow();
     }
 
     private int getBeforeAngelWidth() {

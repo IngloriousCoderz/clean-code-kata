@@ -25,7 +25,6 @@ public abstract class AbstractTree implements Tree {
         return tree;
     }
 
-    @Override
     public List<String> buildBase() {
         List<String> base = new ArrayList();
         for (int i = 0; i < getBaseHeight(); i++) {
@@ -34,9 +33,6 @@ public abstract class AbstractTree implements Tree {
         return base;
     }
 
-    protected abstract String buildBaseRow();
-
-    @Override
     public List<String> buildTrunk() {
         List<String> trunk = new ArrayList();
         for (int i = 0; i < getTrunkHeight(); i++) {
@@ -44,6 +40,4 @@ public abstract class AbstractTree implements Tree {
         }
         return trunk;
     }
-
-    protected abstract String buildTrunkRow();
 }

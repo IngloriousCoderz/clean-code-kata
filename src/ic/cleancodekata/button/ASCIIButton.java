@@ -1,5 +1,8 @@
 package ic.cleancodekata.button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ASCIIButton {
 
     private final static String EMPTY_STRING = "";
@@ -14,7 +17,7 @@ public class ASCIIButton {
     private final String text;
 
     public static void main(String[] args) {
-        System.out.println(new ASCIIButton(10, 10, "hello").build());
+        System.out.println(String.join(NEWLINE, new ASCIIButton(10, 10, "hello").build()));
     }
 
     public ASCIIButton(int rows, int columns, String text) {
@@ -23,17 +26,15 @@ public class ASCIIButton {
         this.text = text;
     }
 
-    public String build() {
-        int rowsWithoutBorders = rows - 2;
-        int halfRows = rowsWithoutBorders / 2;
-        int halfRowsFixed = halfRows - fixIfEven(rowsWithoutBorders);
+    public List<String> build() {
+        int halfRows = getOffsetInRows(rows);
 
-        String button = EMPTY_STRING;
-        button += buildWholeRow(columns);
-        button += buildEmptyRows(halfRowsFixed, columns);
-        button += buildRowWithText(columns, this.text);
-        button += buildEmptyRows(halfRows, columns);
-        button += buildWholeRow(columns);
+        List<String> button = new ArrayList();
+        button.add(buildWholeRow(columns));
+        button.addAll(buildEmptyRows(halfRows - fixIfEven(rows), columns));
+        button.add(buildRowWithText(columns, this.text));
+        button.addAll(buildEmptyRows(halfRows, columns));
+        button.add(buildWholeRow(columns));
 
         return button;
     }
@@ -43,17 +44,14 @@ public class ASCIIButton {
         for (int j = 0; j < columns; j++) {
             row += WHOLE_CELL;
         }
-        row += NEWLINE;
-
         return row;
     }
 
-    private String buildEmptyRows(int rows, int columns) {
-        String emptyRows = EMPTY_STRING;
+    private List<String> buildEmptyRows(int rows, int columns) {
+        List<String> emptyRows = new ArrayList();
         for (int i = 0; i < rows; i++) {
-            emptyRows += buildEmptyRow(columns);
+            emptyRows.add(buildEmptyRow(columns));
         }
-
         return emptyRows;
     }
 
@@ -62,21 +60,28 @@ public class ASCIIButton {
     }
 
     private String buildRowWithText(int columns, String text) {
+        int offsetInChars = getOffsetInChars(columns, text);
+
+        String rowWithText = EMPTY_STRING;
+        rowWithText += buildLeftOffset(offsetInChars - fixIfOdd(text.length()));
+        rowWithText += text;
+        rowWithText += buildRightOffset(offsetInChars);
+
+        return rowWithText;
+    }
+
+    private int getOffsetInRows(int rows) {
+        int rowsWithoutBorders = rows - 2;
+        return rowsWithoutBorders / 2;
+    }
+
+    private int getOffsetInChars(int columns, String text) {
         int columnsWithoutBorders = columns - 2;
         float halfColumns = columnsWithoutBorders / 2.0f;
         int charsInHalfColumns = (int) (halfColumns * EMPTY_CELL.length());
-
         int textLength = text.length();
         int halfText = textLength / 2;
-        int halfTextFixed = halfText + fixIfOdd(textLength);
-
-        String rowWithText = EMPTY_STRING;
-        rowWithText += buildLeftOffset(charsInHalfColumns - halfTextFixed);
-        rowWithText += text;
-        rowWithText += buildRightOffset(charsInHalfColumns - halfText);
-        rowWithText += NEWLINE;
-
-        return rowWithText;
+        return charsInHalfColumns - halfText;
     }
 
     private String buildLeftOffset(int chars) {

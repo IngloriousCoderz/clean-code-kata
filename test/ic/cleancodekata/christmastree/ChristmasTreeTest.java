@@ -6,6 +6,9 @@ import static org.junit.Assert.*;
 
 public class ChristmasTreeTest {
 
+    private final static String PINE_WITH_BALLS_AND_CANDLES_REGEX = "^\\s*ì[/\\so\\*\\\\]+ì$";
+    private final static String OAK_WITH_BALLS_AND_CANDLES_REGEX = "^ì[|\\so\\*]+ì$";
+
     @Test
     public void testDefault() {
         Tree tree = new PineTree(7);
@@ -156,11 +159,18 @@ public class ChristmasTreeTest {
 
         List<String> result = tree.build();
         int length = expected.length;
+        int startOfRandomRows = 2;
+        int afterRandomRows = length - 2;
 
-        assertEquals(expected[0], result.get(0));
-        assertEquals(expected[1], result.get(1));
-        assertEquals(expected[length - 2], result.get(length - 2));
-        assertEquals(expected[length - 1], result.get(length - 1));
+        for (int i = 0; i < startOfRandomRows; i++) {
+            assertEquals(expected[i], result.get(i));
+        }
+        for (int i = startOfRandomRows; i < afterRandomRows; i++) {
+            assertTrue(result.get(i).matches(PINE_WITH_BALLS_AND_CANDLES_REGEX));
+        }
+        for (int i = afterRandomRows; i < length; i++) {
+            assertEquals(expected[i], result.get(i));
+        }
     }
 
     @Test
@@ -182,11 +192,18 @@ public class ChristmasTreeTest {
 
         List<String> result = tree.build();
         int length = expected.length;
+        int startOfRandomRows = 2;
+        int afterRandomRows = length - 2;
 
-        assertEquals(expected[0], result.get(0));
-        assertEquals(expected[1], result.get(1));
-        assertEquals(expected[length - 2], result.get(length - 2));
-        assertEquals(expected[length - 1], result.get(length - 1));
+        for (int i = 0; i < startOfRandomRows; i++) {
+            assertEquals(expected[i], result.get(i));
+        }
+        for (int i = startOfRandomRows; i < afterRandomRows; i++) {
+            assertTrue(result.get(i).matches(PINE_WITH_BALLS_AND_CANDLES_REGEX));
+        }
+        for (int i = afterRandomRows; i < length; i++) {
+            assertEquals(expected[i], result.get(i));
+        }
     }
 
     @Test
@@ -246,12 +263,17 @@ public class ChristmasTreeTest {
 
         List<String> result = tree.build();
         int length = expected.length;
+        int startOfRandomRows = 2;
+        int afterRandomRows = length - 4;
 
-        assertEquals(expected[0], result.get(0));
-        assertEquals(expected[1], result.get(1));
-        assertEquals(expected[length - 4], result.get(length - 4));
-        assertEquals(expected[length - 3], result.get(length - 3));
-        assertEquals(expected[length - 2], result.get(length - 2));
-        assertEquals(expected[length - 1], result.get(length - 1));
+        for (int i = 0; i < startOfRandomRows; i++) {
+            assertEquals(expected[i], result.get(i));
+        }
+        for (int i = startOfRandomRows; i < afterRandomRows; i++) {
+            assertTrue(result.get(i).matches(OAK_WITH_BALLS_AND_CANDLES_REGEX));
+        }
+        for (int i = afterRandomRows; i < length; i++) {
+            assertEquals(expected[i], result.get(i));
+        }
     }
 }

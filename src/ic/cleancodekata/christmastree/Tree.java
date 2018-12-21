@@ -12,9 +12,9 @@ public interface Tree {
 
     public List<String> buildCanopy();
 
-    public List<String> buildBase();
+    public String buildBaseRow();
 
-    public List<String> buildTrunk();
+    public String buildTrunkRow();
 
     public int getMinimumAllowedCanopyHeight();
 

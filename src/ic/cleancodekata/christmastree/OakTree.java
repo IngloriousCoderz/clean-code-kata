@@ -80,10 +80,8 @@ public class OakTree extends AbstractTree implements Tree {
     }
 
     @Override
-    protected String buildBaseRow() {
-        int halfWidth = width / 2;
-        int halfBase = BASE.length() / 2;
-        int beforeBase = halfWidth - halfBase;
+    public String buildBaseRow() {
+        int beforeBase = getBeforeBaseWidth();
 
         String base = EMPTY_STRING;
         for (int j = 0; j < beforeBase; j++) {
@@ -94,10 +92,8 @@ public class OakTree extends AbstractTree implements Tree {
     }
 
     @Override
-    protected String buildTrunkRow() {
-        int halfWidth = getWidth() / 2;
-        int halfTrunk = TRUNK.length() / 2;
-        int beforeTrunk = halfWidth - halfTrunk;
+    public String buildTrunkRow() {
+        int beforeTrunk = getBeforeTrunkWidth();
 
         String trunk = EMPTY_STRING;
         for (int j = 0; j < beforeTrunk; j++) {
@@ -105,6 +101,18 @@ public class OakTree extends AbstractTree implements Tree {
         }
         trunk += TRUNK;
         return trunk;
+    }
+
+    private int getBeforeBaseWidth() {
+        int halfWidth = width / 2;
+        int halfBase = BASE.length() / 2;
+        return halfWidth - halfBase;
+    }
+
+    private int getBeforeTrunkWidth() {
+        int halfWidth = getWidth() / 2;
+        int halfTrunk = TRUNK.length() / 2;
+        return halfWidth - halfTrunk;
     }
 
     @Override

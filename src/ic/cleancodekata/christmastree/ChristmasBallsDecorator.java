@@ -3,9 +3,10 @@ package ic.cleancodekata.christmastree;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChristmasBallsDecorator implements Tree {
+public class ChristmasBallsDecorator extends AbstractTree {
 
     private final static String AVAILABLE_LIGHTS = "o * ";
+    private final static String SPLIT_CANOPY_ROW_REGEX = "[^\\s]+";
 
     private final Tree tree;
 
@@ -14,17 +15,18 @@ public class ChristmasBallsDecorator implements Tree {
     }
 
     @Override
-    public List<String> build() {
-        List<String> tree = new ArrayList();
-        tree.addAll(buildCanopy());
-        tree.addAll(buildBase());
-        tree.addAll(buildTrunk());
-        return tree;
+    public List<String> buildCanopy() throws HeightTooSmallException {
+        return putChristmasBalls(tree.buildCanopy());
     }
 
     @Override
-    public List<String> buildCanopy() throws HeightTooSmallException {
-        return putChristmasBalls(tree.buildCanopy());
+    public String buildBaseRow() {
+        return tree.buildBaseRow();
+    }
+
+    @Override
+    public String buildTrunkRow() {
+        return tree.buildTrunkRow();
     }
 
     private List<String> putChristmasBalls(List<String> rows) {
@@ -36,9 +38,9 @@ public class ChristmasBallsDecorator implements Tree {
     }
 
     private String putChristmasBallsOnRow(String row) {
-        String[] tokens = row.split("[^\\s]+");
+        String[] tokens = row.split(SPLIT_CANOPY_ROW_REGEX);
 
-        if (!isEmptyRow(tokens)) {
+        if (!rowHasRoomForBalls(tokens)) {
             return row;
         }
 
@@ -55,23 +57,13 @@ public class ChristmasBallsDecorator implements Tree {
         return builder.toString();
     }
 
-    private boolean isEmptyRow(String[] tokens) {
+    private boolean rowHasRoomForBalls(String[] tokens) {
         return tokens.length == 2;
     }
 
     private char chooseRandomLight() {
         int index = (int) (Math.random() * AVAILABLE_LIGHTS.length());
         return AVAILABLE_LIGHTS.charAt(index);
-    }
-
-    @Override
-    public List<String> buildBase() {
-        return tree.buildBase();
-    }
-
-    @Override
-    public List<String> buildTrunk() {
-        return tree.buildTrunk();
     }
 
     @Override

@@ -4,7 +4,7 @@ import static ic.cleancodekata.christmastree.Tree.SPACE;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChristmasCandlesDecorator implements Tree {
+public class ChristmasCandlesDecorator extends AbstractTree {
 
     private final static String CANDLE = "ì";
 
@@ -15,27 +15,18 @@ public class ChristmasCandlesDecorator implements Tree {
     }
 
     @Override
-    public List<String> build() {
-        List<String> tree = new ArrayList();
-        tree.addAll(buildCanopy());
-        tree.addAll(buildBase());
-        tree.addAll(buildTrunk());
-        return tree;
-    }
-
-    @Override
     public List<String> buildCanopy() {
         return putCandles(tree.buildCanopy());
     }
 
     @Override
-    public List<String> buildBase() {
-        return shiftRight(tree.buildBase());
+    public String buildBaseRow() {
+        return shiftRowRight(tree.buildBaseRow());
     }
 
     @Override
-    public List<String> buildTrunk() {
-        return shiftRight(tree.buildTrunk());
+    public String buildTrunkRow() {
+        return shiftRowRight(tree.buildTrunkRow());
     }
 
     private List<String> putCandles(List<String> rows) {
@@ -47,23 +38,11 @@ public class ChristmasCandlesDecorator implements Tree {
     }
 
     private String putCandlesOnRow(String row) {
-        String shiftedRow = shiftRowRight(row);
         String trimmedRow = row.trim();
-        int leftIndex = shiftedRow.indexOf(trimmedRow);
+        int leftIndex = row.indexOf(trimmedRow);
+        String beforeRow = row.substring(0, leftIndex);
 
-        StringBuilder builder = new StringBuilder(shiftedRow);
-        builder.setCharAt(leftIndex - 1, CANDLE.charAt(0));
-        builder.append(CANDLE);
-
-        return builder.toString();
-    }
-
-    private List<String> shiftRight(List<String> rows) {
-        List<String> rest = new ArrayList();
-        for (int i = 0; i < rows.size(); i++) {
-            rest.add(shiftRowRight(rows.get(i)));
-        }
-        return rest;
+        return beforeRow + CANDLE + trimmedRow + CANDLE;
     }
 
     private String shiftRowRight(String row) {

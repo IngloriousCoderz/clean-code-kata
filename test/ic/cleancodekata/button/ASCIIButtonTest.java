@@ -1,96 +1,125 @@
 package ic.cleancodekata.button;
 
-import static org.junit.Assert.assertEquals;
+import java.util.List;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ASCIIButtonTest {
 
     @Test
-    public void defaultConfiguration() {
+    public void testBase() {
         // given
         ASCIIButton button = new ASCIIButton(10, 10, "ciao");
-        String expected
-                = "* * * * * * * * * * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*       ciao      * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "* * * * * * * * * * \n";
-        
+        String[] expected = new String[]{
+            "* * * * * * * * * * ",
+            "*                 * ",
+            "*                 * ",
+            "*                 * ",
+            "*       ciao      * ",
+            "*                 * ",
+            "*                 * ",
+            "*                 * ",
+            "*                 * ",
+            "* * * * * * * * * * "
+        };
+
         // when
-        String result = button.build();
-        
+        List<String> result = button.build();
+
         // then
-        assertEquals(expected, result);
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
-    public void oddRows() {
+    public void testOddRows() {
         // given
         ASCIIButton button = new ASCIIButton(7, 10, "ciao");
-        String expected
-                = "* * * * * * * * * * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*       ciao      * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "* * * * * * * * * * \n";
-        
+        String[] expected = new String[]{
+            "* * * * * * * * * * ",
+            "*                 * ",
+            "*                 * ",
+            "*       ciao      * ",
+            "*                 * ",
+            "*                 * ",
+            "* * * * * * * * * * "
+        };
+
         // when
-        String result = button.build();
-        
+        List<String> result = button.build();
+
         // then
-        assertEquals(expected, result);
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
-    public void oddColumns() {
+    public void testOddColumns() {
         // given
         ASCIIButton button = new ASCIIButton(10, 7, "ciao");
-        String expected
-                = "* * * * * * * \n"
-                + "*           * \n"
-                + "*           * \n"
-                + "*           * \n"
-                + "*    ciao   * \n"
-                + "*           * \n"
-                + "*           * \n"
-                + "*           * \n"
-                + "*           * \n"
-                + "* * * * * * * \n";
-        
+        String[] expected = new String[]{
+            "* * * * * * * ",
+            "*           * ",
+            "*           * ",
+            "*           * ",
+            "*    ciao   * ",
+            "*           * ",
+            "*           * ",
+            "*           * ",
+            "*           * ",
+            "* * * * * * * "
+        };
+
         // when
-        String result = button.build();
-        
+        List<String> result = button.build();
+
         // then
-        assertEquals(expected, result);
+        assertArrayEquals(expected, result.toArray());
     }
 
     @Test
-    public void oddPhrase() {
+    public void testOddPhrase() {
         // given
         ASCIIButton button = new ASCIIButton(10, 10, "hello");
-        String expected
-                = "* * * * * * * * * * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*      hello      * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "*                 * \n"
-                + "* * * * * * * * * * \n";
-        
+        String[] expected = new String[]{
+            "* * * * * * * * * * ",
+            "*                 * ",
+            "*                 * ",
+            "*                 * ",
+            "*      hello      * ",
+            "*                 * ",
+            "*                 * ",
+            "*                 * ",
+            "*                 * ",
+            "* * * * * * * * * * "
+        };
+
         // when
-        String result = button.build();
-        
+        List<String> result = button.build();
+
         // then
-        assertEquals(expected, result);
+        assertArrayEquals(expected, result.toArray());
+    }
+    
+    @Test
+    public void testOddPhraseInOddColumns() {
+        // given
+        ASCIIButton button = new ASCIIButton(10, 9, "hello");
+        String[] expected = new String[]{
+            "* * * * * * * * * ",
+            "*               * ",
+            "*               * ",
+            "*               * ",
+            "*     hello     * ",
+            "*               * ",
+            "*               * ",
+            "*               * ",
+            "*               * ",
+            "* * * * * * * * * "
+        };
+
+        // when
+        List<String> result = button.build();
+
+        // then
+        assertArrayEquals(expected, result.toArray());
     }
 }
