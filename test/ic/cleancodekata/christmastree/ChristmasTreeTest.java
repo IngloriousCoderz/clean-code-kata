@@ -6,8 +6,8 @@ import static org.junit.Assert.*;
 
 public class ChristmasTreeTest {
 
-    private final static String PINE_WITH_BALLS_AND_CANDLES_REGEX = "^\\s*ì[/\\so\\*\\\\]+ì$";
-    private final static String OAK_WITH_BALLS_AND_CANDLES_REGEX = "^ì[|\\so\\*]+ì$";
+    private final static String PINE_WITH_BALLS_AND_CANDLES_REGEX = "^\\s*ì/[\\so\\*]+\\\\ì$";
+    private final static String OAK_WITH_BALLS_AND_CANDLES_REGEX = "^ì\\|[\\so\\*]+\\|ì$";
 
     @Test
     public void testDefault() {
